@@ -297,7 +297,7 @@ MonoBehaviour:
     RPG
     Items: Roguelike/RPG Items -
 
-    Joe Williamson'
+    Joe Williamson (OpenGameArt.Org)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca530ce3ada35334d93d1001e49583da, type: 2}
   m_sharedMaterial: {fileID: -8300511149215735955, guid: ca530ce3ada35334d93d1001e49583da, type: 2}
