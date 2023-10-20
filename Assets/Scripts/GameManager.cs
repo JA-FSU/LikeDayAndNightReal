@@ -8,11 +8,17 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] PlayerMove playerMove;
     
-    GameState state;
+    public GameState state;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerMove.OpenLevelTwo += (Collider2D treeCollider) =>
+        {
+            var tree = treeCollider.GetComponent<GoToLevelTwo>();
+            tree.ToLevelTwo();
+        };
+
         DialogueManager.Instance.OnShowDialogue += () =>
         {
             state = GameState.Dialogue;

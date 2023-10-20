@@ -654,7 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     lines:
-    - You have no mail.
+    - There is no mail.
 --- !u!61 &398048309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -946,6 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ecb4cad1203484990b2002122e87fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTwo: {fileID: 1443978300}
   moveSpeed: 5
   solidObjectsLayer:
     serializedVersion: 2
@@ -953,6 +954,9 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
+  treeLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!61 &611160986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1311,7 +1315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110026868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.79742575, y: 12.532559, z: -3.1714246}
+  m_LocalPosition: {x: 0.79742575, y: 11.532559, z: -3.1714246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1758,8 +1762,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1443978297}
   - component: {fileID: 1443978299}
-  - component: {fileID: 1443978298}
-  m_Layer: 8
+  - component: {fileID: 1443978300}
+  m_Layer: 9
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1781,22 +1785,6 @@ Transform:
   m_Father: {fileID: 986693990}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1443978298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443978296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3b9993e8386d845821412e3feaac5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    lines:
-    - You touch the tree.
-    - You fool...
 --- !u!61 &1443978299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1823,6 +1811,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.9108896, y: 2.1890957}
   m_EdgeRadius: 0
+--- !u!114 &1443978300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443978296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e227532d5bebe08439a4b2703ce739b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    lines:
+    - You touch the tree.
+    - You fool...
+  worked: 0
 --- !u!1 &1541063324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +1960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMove: {fileID: 611160985}
+  state: 0
 --- !u!4 &1764323598
 Transform:
   m_ObjectHideFlags: 0

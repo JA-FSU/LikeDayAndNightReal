@@ -6,8 +6,19 @@ public class NPCController : MonoBehaviour, Interactable
 {
     [SerializeField] Dialogue dialogue;
 
+    NPCState state;
+
     public void Interact()
     {
-        StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue));
+        if (state == NPCState.Idle)
+        {
+            state = NPCState.Dialogue;
+            StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue, () =>
+            {
+                state = NPCState.Idle;
+            }));
+        }
     }
 }
+
+public enum NPCState { Idle, Dialogue }

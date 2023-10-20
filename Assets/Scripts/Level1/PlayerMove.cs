@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] GoToLevelTwo levelTwo;
+    
     Animator animator;
     private bool isMoving;
     private Vector2 input;
     public float moveSpeed;
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
+    public LayerMask treeLayer;
+
+    public event Action<Collider2D> OpenLevelTwo;
 
     private void Awake()
     {
@@ -63,10 +69,14 @@ public class PlayerMove : MonoBehaviour
 
         Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
 
-        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
-        if (collider !=null)
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer | treeLayer);
+        if (collider !=null && collider != GameObject.Find("Tree").GetComponent<BoxCollider2D>())
         {
             collider.GetComponent<Interactable>()?.Interact();
+        }
+        else if (collider != null && collider == GameObject.Find("Tree").GetComponent<BoxCollider2D>())
+        {
+            OpenLevelTwo?.Invoke(collider);
         }
     }
 
