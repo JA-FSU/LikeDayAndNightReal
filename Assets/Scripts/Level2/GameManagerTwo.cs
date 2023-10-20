@@ -9,21 +9,13 @@ public class GameManagerTwo : MonoBehaviour
     PlayerTwoController playerTwo;
     public TextMeshProUGUI timerText;
 
-    public float time = 60.0f;
+    private float time = 70.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         playerTwo = GameObject.Find("Player").GetComponent<PlayerTwoController>();
-        timerText.text = "Timer: " + Mathf.Round(time);
-    }
-
-    void FixedUpdate()
-    {
-        if (!playerTwo.gameOver)
-        {
-            UpdateTimer(Time.deltaTime*100);
-        }
+        timerText.text = "Timer: " + time;
     }
 
     // Update is called once per frame
@@ -44,15 +36,15 @@ public class GameManagerTwo : MonoBehaviour
             Debug.Log("Quitting...");
             Application.Quit();
         }
-    }
 
-    public void UpdateTimer(float timeToSubtract)
-    {
-        time -= timeToSubtract;
-        timerText.text = "Timer: " + Mathf.Round(time);
-        if (time <= 0)
+        if (!playerTwo.gameOver && time > 0)
         {
-            SceneManager.LoadScene("Title Screen");
+            time -= Time.deltaTime;
+            timerText.text = "Timer: " + Mathf.Round(time);
+            if (time <= 0)
+            {
+                SceneManager.LoadScene("Title Screen");
+            }
         }
     }
 }
