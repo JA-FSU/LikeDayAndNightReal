@@ -52,5 +52,11 @@ public class GameManager : MonoBehaviour
         {
             DialogueManager.Instance.HandleUpdate();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Quitting...");
+            Application.Quit();
+        }
     }
 }
