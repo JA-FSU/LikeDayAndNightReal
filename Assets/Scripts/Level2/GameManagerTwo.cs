@@ -43,6 +43,7 @@ public class GameManagerTwo : MonoBehaviour
             timerText.text = "Timer: " + Mathf.Round(time);
             if (time <= 0)
             {
+                Cursor.visible = true;
                 SceneManager.LoadScene("Title Screen");
             }
         }
